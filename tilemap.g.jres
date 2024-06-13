@@ -4,12 +4,6 @@
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true
     },
-    "tile1": {
-        "data": "hwQQABAAAADw////DwAAAP8RERH/AAAAHxEREfEAAAAfEf8f8QAAAB/x8RHxAAAAHxH/H/EAAAAfHxHx8QAAAB/////xAAAAHx8R8fEAAAAfERER8QAAAB8RERHxAAAAHxEREfEAAAAfERER8QAAAB8RERHxAAAA/xEREf8AAADw////DwAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "rename"
-    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

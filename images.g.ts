@@ -1017,32 +1017,6 @@ f11111111111111f
 .f111111111111f.
 ..ffffffffffff..
 `;
-            case "image37":
-            case "我的影像1":return img`
-. f f f f f f f f f f f f f f . 
-f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
-f 1 1 1 1 1 f f f 1 1 1 1 1 1 f 
-f 1 1 1 f 1 1 f 1 1 1 1 1 1 1 f 
-f 1 1 f 1 f 1 f 1 1 1 1 1 1 1 f 
-f 1 1 f f f 1 f 1 1 1 1 1 1 1 f 
-f 1 1 f 1 f 1 f 1 1 1 1 1 1 1 f 
-f 1 1 1 1 1 f f f 1 1 1 1 1 1 f 
-f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
-. f f f f f f f f f f f f f f . 
-`;
-            case "image38":
-            case "copy":return img`
-. f f f f f f f f f f f f f f . 
-f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
-f 1 1 f f f f f 1 1 1 1 1 1 1 f 
-f 1 1 f 1 1 1 f f f 1 1 1 1 1 f 
-f 1 1 f f f f f 1 f 1 1 1 1 1 f 
-f 1 1 1 1 f 1 1 1 f 1 1 1 1 1 f 
-f 1 1 1 1 f f f f f 1 1 1 1 1 f 
-f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
-f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
-. f f f f f f f f f f f f f f . 
-`;
             case "image39":
             case "準則0":return img`
 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
@@ -1336,6 +1310,32 @@ ddddddddd55555555555555555555ddddddddddddddddddddd555555dddddddddddddddddddddddd
 9 1 2 2 2 1 1 1 1 1 1 1 1 1 1 9 
 . 9 1 1 1 1 1 1 1 1 1 1 1 1 9 . 
 . . 9 9 9 9 9 9 9 9 9 9 9 9 . . 
+`;
+            case "image37":
+            case "rename":return img`
+. f f f f f f f f f f f f f f . 
+f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
+f 1 1 1 1 1 f f f 1 1 1 1 1 1 f 
+f 1 1 1 f 1 1 f 1 1 1 1 1 1 1 f 
+f 1 1 f 1 f 1 f 1 1 1 1 1 1 1 f 
+f 1 1 f f f 1 f 1 1 1 1 1 1 1 f 
+f 1 1 f 1 f 1 f 1 1 1 1 1 1 1 f 
+f 1 1 1 1 1 f f f 1 1 1 1 1 1 f 
+f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
+. f f f f f f f f f f f f f f . 
+`;
+            case "image38":
+            case "copy":return img`
+. f f f f f f f f f f f f f f . 
+f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
+f 1 1 f f f f f 1 1 1 1 1 1 1 f 
+f 1 1 f 1 1 1 f f f 1 1 1 1 1 f 
+f 1 1 f f f f f 1 f 1 1 1 1 1 f 
+f 1 1 1 1 f 1 1 1 f 1 1 1 1 1 f 
+f 1 1 1 1 f f f f f 1 1 1 1 1 f 
+f 1 1 1 1 1 1 1 1 1 1 1 1 1 1 f 
+f f 1 1 1 1 1 1 1 1 1 1 1 1 f f 
+. f f f f f f f f f f f f f f . 
 `;
         }
         return null;

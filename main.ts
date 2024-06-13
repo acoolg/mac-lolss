@@ -6,6 +6,12 @@ namespace SpriteKind {
     export const key = SpriteKind.create()
     export const not_to_show = SpriteKind.create()
     export const message = SpriteKind.create()
+    export const list = SpriteKind.create()
+    export const icon = SpriteKind.create()
+    export const menu_bar = SpriteKind.create()
+}
+function 右鍵選單 () {
+	
 }
 // page (1) = start screen
 // 
@@ -28,12 +34,11 @@ function 按下一個 (app2: Sprite, 畫面編號: number) {
         }
         if (page == 2) {
             scene.setBackgroundImage(assets.image`App store`)
-            serch = sprites.create(assets.image`serch`, SpriteKind.Player)
+            serch = sprites.create(assets.image`serch`, SpriteKind.icon)
             serch.setPosition(146, 115)
             sprites.destroy(mail)
             sprites.destroy(app_store)
         }
-        關閉()
     }
 }
 controller.combos.attachCombo("b, a, b, a", function () {
@@ -56,18 +61,7 @@ function 初始化 () {
     mouse2 = sprites.create(assets.image`mouse`, SpriteKind.mouse)
     sprites.destroyAllSpritesOfKind(SpriteKind.message)
     mouse2.setPosition(mouse_x, mouse_y)
-    use_close = true
     controller.moveSprite(mouse2)
-    mouse2.setStayInScreen(true)
-    關閉關閉()
-    appx = [
-    "",
-    "b",
-    "c",
-    "",
-    "",
-    ""
-    ]
 }
 controller.combos.attachCombo("up, b, a", function () {
 	
@@ -78,25 +72,10 @@ function 頁面 () {
     }
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    music.play(music.createSoundEffect(WaveShape.Square, 200, 1, 255, 0, 100, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
-    if (list_show) {
-        sprites.destroy(rename)
-        sprites.destroy(copy)
-        list_show = false
-    } else {
-        list_show = true
-        rename = sprites.create(assets.image`我的影像1`, SpriteKind.index)
-        copy = sprites.create(assets.image`copy`, SpriteKind.Player)
-        rename.setPosition(mouse2.x - 25, mouse2.y + 0)
-        copy.setPosition(mouse2.x + 25, mouse2.y + 0)
-        屬標圖層往上()
-    }
+    music.play(music.createSoundEffect(WaveShape.Noise, 3900, 4601, 255, 68, 10, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
+    rename = sprites.create(assets.image`copy`, SpriteKind.menu_bar)
+    rename.setPosition(mouse2.x, mouse2.y)
 })
-function 關閉關閉 () {
-    sprites.destroy(close)
-    sprites.destroy(small)
-    sprites.destroy(smallest)
-}
 function 屬標圖層往上 () {
     mouse_y = mouse2.y
     mouse_x = mouse2.x
@@ -106,14 +85,15 @@ function 屬標圖層往上 () {
     controller.moveSprite(mouse2)
 }
 controller.combos.attachCombo("up, up, down, down, left, right, left, right, B, A", function () {
-    if (keybord_show == 2) {
-        keybord_show = 0
+    if (keybord_show) {
+        keybord_show = false
         sprites.destroy(keyboard)
         sprites.destroyAllSpritesOfKind(SpriteKind.key)
-    } else if (keybord_show == 0) {
+    } else {
         music.play(music.createSoundEffect(WaveShape.Sine, 200, 600, 255, 0, 150, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
         keyboard = sprites.create(assets.image`key board`, SpriteKind.index)
-        keybord_show = 1
+        屬標圖層往上()
+        keybord_show = true
         key_1 = sprites.create(assets.image`key 1`, SpriteKind.key)
         key_2 = sprites.create(assets.image`key 2`, SpriteKind.key)
         key_3 = sprites.create(assets.image`key 3`, SpriteKind.key)
@@ -134,26 +114,12 @@ controller.combos.attachCombo("up, up, down, down, left, right, left, right, B, 
         key_8.setPosition(120, 66)
         key_9.setPosition(136, 66)
         key_0.setPosition(152, 66)
-        keybord_show = 1
-        屬標圖層往上()
-    } else {
-        keybord_show = 2
     }
 })
 function 按下郵件 (郵件: Sprite, 訊息: string) {
     if (mouse2.overlapsWith(郵件) && controller.A.isPressed()) {
         mouse2.sayText(訊息, 5000, true)
     }
-}
-function 關閉 () {
-    close = sprites.create(assets.image`close`, SpriteKind.index)
-    use_close = true
-    close.setPosition(4, 4)
-    small = sprites.create(assets.image`small`, SpriteKind.index)
-    small.setPosition(9, 4)
-    smallest = sprites.create(assets.image`smallest`, SpriteKind.index)
-    smallest.setPosition(14, 4)
-    屬標圖層往上()
 }
 let key_0: Sprite = null
 let key_9: Sprite = null
@@ -166,43 +132,30 @@ let key_3: Sprite = null
 let key_2: Sprite = null
 let key_1: Sprite = null
 let keyboard: Sprite = null
-let smallest: Sprite = null
-let small: Sprite = null
-let close: Sprite = null
-let copy: Sprite = null
 let rename: Sprite = null
-let appx: string[] = []
-let use_close = false
 let mouse_x = 0
 let mouse_y = 0
 let serch: Sprite = null
 let massage_wellcome: Sprite = null
 let massage_demo: Sprite = null
 let page = 0
-let list_show = false
 let mouse2: Sprite = null
-let keybord_show = 0
+let keybord_show = false
 let app_store: Sprite = null
 let mail: Sprite = null
 scene.setBackgroundImage(assets.image`準則`)
 mail = sprites.create(assets.image`mail`, SpriteKind.app)
 app_store = sprites.create(assets.image`appstore`, SpriteKind.app)
-keybord_show = 0
+keybord_show = false
 mail.setPosition(19, 106)
 app_store.setPosition(36, 106)
 mouse2 = sprites.create(assets.image`mouse`, SpriteKind.mouse)
-controller.moveSprite(mouse2, 50, 50)
-mouse2.setStayInScreen(true)
-keybord_show = 0
+controller.moveSprite(mouse2)
 game.showLongText("這是由YT老錢大事典所做的作業系統Mac lols。由搖桿控制鼠標。A代表左鍵，B代表右鍵。上上下下左右左右ba，即可叫出鍵盤。", DialogLayout.Full)
-list_show = false
+keybord_show = false
+mouse2.setStayInScreen(true)
 forever(function () {
     按下一個(mail, 1)
     按下一個(app_store, 2)
     頁面()
-    if (use_close) {
-        if (mouse2.overlapsWith(close) && controller.A.isPressed()) {
-            初始化()
-        }
-    }
 })
