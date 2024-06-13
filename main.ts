@@ -9,15 +9,38 @@ namespace SpriteKind {
     export const list = SpriteKind.create()
     export const icon = SpriteKind.create()
     export const menu_bar = SpriteKind.create()
+    export const bg = SpriteKind.create()
 }
 function 右鍵選單 () {
-	
+    sprites.destroyAllSpritesOfKind(SpriteKind.menu_bar)
+    bar_show = true
+    re = sprites.create(assets.image`re`, SpriteKind.menu_bar)
+    copy = sprites.create(assets.image`copy`, SpriteKind.menu_bar)
+    add = sprites.create(assets.image`add`, SpriteKind.menu_bar)
+    more = sprites.create(assets.image`more`, SpriteKind.menu_bar)
+    re.setPosition(mouse2.x, mouse2.y)
+    copy.setPosition(mouse2.x, mouse2.y)
+    add.setPosition(mouse2.x, mouse2.y)
+    more.setPosition(mouse2.x, mouse2.y)
+    for (let index = 0; index < 15; index++) {
+        more.y += -1
+        copy.y += 1
+        re.x += 1.5
+        add.x += -1.5
+        屬標圖層往上()
+        pause(1)
+    }
 }
 // page (1) = start screen
 // 
 // page (0) = app screen
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     music.play(music.createSoundEffect(WaveShape.Square, 932, 1, 255, 68, 75, SoundExpressionEffect.Vibrato, InterpolationCurve.Logarithmic), music.PlaybackMode.UntilDone)
+    if (bar_show) {
+        if (!(re.overlapsWith(mouse2)) && (!(add.overlapsWith(mouse2)) && (!(copy.overlapsWith(mouse2)) && !(more.overlapsWith(mouse2))))) {
+            sprites.destroyAllSpritesOfKind(SpriteKind.menu_bar)
+        }
+    }
 })
 function 按下一個 (app2: Sprite, 畫面編號: number) {
     if (controller.A.isPressed() && mouse2.overlapsWith(app2)) {
@@ -48,6 +71,7 @@ controller.combos.attachCombo("b, a, b, a", function () {
 // 
 // page (1) = mail
 function 初始化 () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.menu_bar)
     scene.setBackgroundImage(assets.image`準則`)
     page = 0
     mail = sprites.create(assets.image`mail`, SpriteKind.app)
@@ -63,6 +87,9 @@ function 初始化 () {
     mouse2.setPosition(mouse_x, mouse_y)
     controller.moveSprite(mouse2)
 }
+function 關閉右鍵選單 () {
+	
+}
 controller.combos.attachCombo("up, b, a", function () {
 	
 })
@@ -73,8 +100,7 @@ function 頁面 () {
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     music.play(music.createSoundEffect(WaveShape.Noise, 3900, 4601, 255, 68, 10, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
-    rename = sprites.create(assets.image`copy`, SpriteKind.menu_bar)
-    rename.setPosition(mouse2.x, mouse2.y)
+    右鍵選單()
 })
 function 屬標圖層往上 () {
     mouse_y = mouse2.y
@@ -116,6 +142,17 @@ controller.combos.attachCombo("up, up, down, down, left, right, left, right, B, 
         key_0.setPosition(152, 66)
     }
 })
+function 準備關閉 () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.menu_bar)
+    re = sprites.create(assets.image`我的影像1`, SpriteKind.menu_bar)
+    copy = sprites.create(assets.image`我的影像1`, SpriteKind.menu_bar)
+    add = sprites.create(assets.image`我的影像1`, SpriteKind.menu_bar)
+    more = sprites.create(assets.image`我的影像1`, SpriteKind.menu_bar)
+    re.setPosition(mouse2.x + 50, mouse2.y)
+    copy.setPosition(mouse2.x + 50, mouse2.y)
+    add.setPosition(mouse2.x + 50, mouse2.y)
+    more.setPosition(mouse2.x + 50, mouse2.y)
+}
 function 按下郵件 (郵件: Sprite, 訊息: string) {
     if (mouse2.overlapsWith(郵件) && controller.A.isPressed()) {
         mouse2.sayText(訊息, 5000, true)
@@ -132,18 +169,23 @@ let key_3: Sprite = null
 let key_2: Sprite = null
 let key_1: Sprite = null
 let keyboard: Sprite = null
-let rename: Sprite = null
 let mouse_x = 0
 let mouse_y = 0
 let serch: Sprite = null
 let massage_wellcome: Sprite = null
 let massage_demo: Sprite = null
 let page = 0
+let more: Sprite = null
+let add: Sprite = null
+let copy: Sprite = null
+let re: Sprite = null
 let mouse2: Sprite = null
 let keybord_show = false
 let app_store: Sprite = null
 let mail: Sprite = null
+let bar_show = false
 scene.setBackgroundImage(assets.image`準則`)
+bar_show = false
 mail = sprites.create(assets.image`mail`, SpriteKind.app)
 app_store = sprites.create(assets.image`appstore`, SpriteKind.app)
 keybord_show = false
